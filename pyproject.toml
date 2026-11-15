@@ -35,7 +35,7 @@ dependencies = [
   "django>=3.2",
   "openpyxl",
 ]
-urls.Homepage = "https://github.com/matthiask/xlsxdocument/"
+urls.Homepage = "https://github.com/feincms/xlsxdocument/"
 
 [tool.hatch]
 version.path = "xlsxdocument/__init__.py"
