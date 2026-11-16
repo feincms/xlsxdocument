@@ -51,14 +51,15 @@ class XLSXDocument:
             elif value is None:
                 processed.append("-")
             else:
-                value = ILLEGAL_CHARACTERS_RE.sub("", ("%s" % value).strip())
-                if value.startswith("="):
+                text = ILLEGAL_CHARACTERS_RE.sub("", ("%s" % value).strip())
+                if text.startswith("="):
                     # openpyxl would write the value as a formula
-                    cell = WriteOnlyCell(self.sheet, value)
+                    cell = WriteOnlyCell(self.sheet, text)
                     cell.data_type = "s"
                     cell.quotePrefix = True
-                    value = cell
-                processed.append(value)
+                    processed.append(cell)
+                else:
+                    processed.append(text)
         return processed
 
     def table_from_queryset(self, queryset, additional=()):
